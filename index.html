@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Цифровая трансформация и цифровизация бизнеса — выберите масштаб</title>
+<meta name="description" content="Услуги цифровой трансформации и цифровизации для малого, среднего и крупного бизнеса. Выберите свой сегмент.">
+<style>
+  :root{
+    --bg:#ffffff; --ink:#13233b; --muted:#5b6b82; --line:#e6ecf3;
+    --primary:#1f4e8c; --primary-dark:#163a68; --soft:#f3f7fc; --soft2:#eef4fb;
+    --accent:#ff7a18; --accent-dark:#e96a08; --ok:#0fa36b;
+    --radius:18px; --shadow:0 10px 30px rgba(20,40,70,.08); --maxw:1080px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{line-height:1.2;margin:0 0 .4em}
+  h1{font-size:clamp(2rem,4.6vw,3.2rem);font-weight:800;letter-spacing:-.02em}
+  h3{font-size:1.3rem;font-weight:800}
+  p{margin:0 0 1rem}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  .btn{display:inline-flex;align-items:center;gap:.5em;background:var(--accent);color:#fff;font-weight:700;
+    padding:.85em 1.5em;border-radius:999px;font-size:1.0rem;box-shadow:0 8px 20px rgba(255,122,24,.32);
+    transition:transform .15s ease,background .15s ease}
+  .btn:hover{background:var(--accent-dark);transform:translateY(-2px)}
+
+  .hero{background:linear-gradient(160deg,#f3f7fc 0%,#eaf1fb 55%,#ffffff 100%);padding:clamp(56px,8vw,104px) 0 clamp(36px,5vw,60px);text-align:center}
+  .hero .badge{display:inline-block;background:#e4eefc;color:var(--primary);font-weight:700;font-size:.82rem;
+    padding:.4em .9em;border-radius:999px;margin-bottom:18px}
+  .hero p.lead{font-size:clamp(1.05rem,1.8vw,1.3rem);color:var(--muted);max-width:60ch;margin:0 auto}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;padding:clamp(30px,5vw,56px) 0}
+  @media(max-width:840px){.cards{grid-template-columns:1fr}}
+  .seg{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:28px;box-shadow:var(--shadow);transition:transform .15s ease,box-shadow .15s ease}
+  .seg:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(20,40,70,.14)}
+  .seg .tag{align-self:flex-start;font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;
+    color:#fff;background:var(--primary);padding:.35em .8em;border-radius:999px;margin-bottom:16px}
+  .seg.s2 .tag{background:#2e6cc0}.seg.s3 .tag{background:var(--primary-dark)}
+  .seg h3{margin-bottom:.3em}
+  .seg .desc{color:var(--muted);font-size:.99rem;flex:1}
+  .seg ul{list-style:none;padding:0;margin:14px 0 18px;display:grid;gap:8px}
+  .seg ul li{display:flex;gap:9px;align-items:flex-start;color:var(--ink);font-size:.95rem}
+  .seg ul li::before{content:"✓";color:var(--ok);font-weight:800;flex:0 0 auto}
+  .seg .price{font-weight:800;color:var(--primary);margin-bottom:18px;font-size:1.02rem}
+  .seg .go{display:inline-flex;align-items:center;gap:.5em;font-weight:700;color:var(--primary)}
+  .seg .go::after{content:"→";transition:transform .15s ease}
+  .seg:hover .go::after{transform:translateX(4px)}
+  .seg .gobtn{margin-top:auto}
+
+  .strip{background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:clamp(34px,5vw,56px) 0;text-align:center}
+  .strip h2{font-size:clamp(1.3rem,2.6vw,1.8rem);font-weight:800;margin-bottom:.4em}
+  .strip p{color:var(--muted);max-width:62ch;margin:0 auto 1rem}
+  .trust{display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;color:var(--muted);font-size:.92rem;margin-top:6px}
+  .trust span{display:inline-flex;gap:.4em}.trust b{color:var(--primary)}
+
+  footer{padding:30px 0;color:var(--muted);font-size:.88rem;text-align:center}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="badge">Казахстан · котировки в тенге · работаем под NDA</span>
+    <h1>Цифровая трансформация бизнеса</h1>
+    <p class="lead">От готовых решений для небольшой компании до программы трансформации «под ключ» для корпорации. Выберите масштаб вашего бизнеса — увидите подходящие услуги, сроки и бюджеты.</p>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="cards">
+
+    <a class="seg s1" href="maliy/">
+      <span class="tag">Малый бизнес</span>
+      <h3>Быстрый цифровой старт</h3>
+      <p class="desc">Готовые проверенные инструменты + лёгкая автоматизация. Без «большой трансформации» на год.</p>
+      <ul>
+        <li>CRM, онлайн-касса/ОФД, оплаты Kaspi</li>
+        <li>Сайт, боты, интеграции</li>
+        <li>Помощь с господдержкой (Даму, ДКБ-2025)</li>
+      </ul>
+      <div class="price">₸150 тыс. – 5 млн · дни–недели</div>
+      <div class="gobtn"><span class="go">Открыть страницу</span></div>
+    </a>
+
+    <a class="seg s2" href="sredniy/">
+      <span class="tag">Средний бизнес</span>
+      <h3>Программа ЦТ: НИР + разработка</h3>
+      <p class="desc">Единый инженерный конвейер: диагностика → анализ → ТЗ → архитектура → разработка → приёмка.</p>
+      <ul>
+        <li>ТЗ по ГОСТ 34.602-2020 / ISO 29148</li>
+        <li>Целевая архитектура и разработка ПО</li>
+        <li>Любой этап можно пропустить</li>
+      </ul>
+      <div class="price">₸0,5 млн – 150 млн · 5–12 мес</div>
+      <div class="gobtn"><span class="go">Открыть страницу</span></div>
+    </a>
+
+    <a class="seg s3" href="krupniy/">
+      <span class="tag">Крупный бизнес</span>
+      <h3>Трансформация «под ключ»</h3>
+      <p class="desc">Полная программа для систем масштаба платформы: от стратегии до работающих систем с госинтеграциями.</p>
+      <ul>
+        <li>Аудит AS-IS, требования, TO-BE</li>
+        <li>Разработка и re-platforming</li>
+        <li>Сквозная трассируемость «исследование → код»</li>
+      </ul>
+      <div class="price">консалтинг ₸8–75 млн · разработка до ₸750 млн+</div>
+      <div class="gobtn"><span class="go">Открыть страницу</span></div>
+    </a>
+
+  </div>
+</div>
+
+<section class="strip">
+  <div class="wrap">
+    <h2>Единый инженерный подход на любом масштабе</h2>
+    <p>Стандарты, атомарные требования, сквозная трассируемость и контроль качества. ИИ-инструменты — под инженерным контролем как ускоритель, а не замена дисциплины. Подтверждено обезличенным кейсом крупной B2B-платформы.</p>
+    <div class="trust">
+      <span><b>✓</b> ГОСТ 34.602-2020</span>
+      <span><b>✓</b> ISO/IEC/IEEE 29148</span>
+      <span><b>✓</b> Работаем под NDA</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© <span id="y"></span> Цифровая трансформация и цифровизация бизнеса · Казахстан</div>
+</footer>
+
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
