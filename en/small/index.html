@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Small business digitalization — in weeks, not a year</title>
+<meta name="description" content="We pick, set up and connect ready-made tools: CRM, online cash register, Kaspi payments, website, bots. Budget ₸150K–5M, timeline days to weeks.">
+<style>
+  :root{
+    --bg:#ffffff; --ink:#13233b; --muted:#5b6b82; --line:#e6ecf3;
+    --primary:#1f4e8c; --primary-dark:#163a68; --soft:#f3f7fc; --soft2:#eef4fb;
+    --accent:#ff7a18; --accent-dark:#e96a08; --ok:#0fa36b;
+    --radius:16px; --shadow:0 10px 30px rgba(20,40,70,.08); --maxw:1080px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{line-height:1.2;margin:0 0 .4em}
+  h1{font-size:clamp(1.9rem,4.4vw,3.1rem);font-weight:800;letter-spacing:-.02em}
+  h2{font-size:clamp(1.4rem,3vw,2.05rem);font-weight:800;letter-spacing:-.01em}
+  h3{font-size:1.12rem;font-weight:700}
+  p{margin:0 0 1rem}
+  a{color:inherit}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  .btn{display:inline-flex;align-items:center;gap:.5em;background:var(--accent);color:#fff;font-weight:700;
+    text-decoration:none;padding:.95em 1.6em;border-radius:999px;border:0;cursor:pointer;font-size:1.03rem;
+    box-shadow:0 8px 20px rgba(255,122,24,.32);transition:transform .15s ease,background .15s ease}
+  .btn:hover{background:var(--accent-dark);transform:translateY(-2px)}
+  .langs{font-size:.85rem;font-weight:700}
+  .langs a{color:var(--muted);text-decoration:none;padding:0 .25em}
+  .langs a.on{color:var(--primary)}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:14px}
+  .brand{font-weight:800;letter-spacing:-.01em;font-size:1.05rem}
+  .brand b{color:var(--primary)}
+  .nav-right{display:flex;align-items:center;gap:16px}
+  .nav .btn{padding:.6em 1.1em;font-size:.92rem}
+  .nav-cta{white-space:nowrap}
+
+  .hero{background:linear-gradient(160deg,#f3f7fc 0%,#eaf1fb 60%,#ffffff 100%);padding:clamp(48px,7vw,92px) 0}
+  .hero .badge{display:inline-block;background:#e4eefc;color:var(--primary);font-weight:700;font-size:.82rem;
+    padding:.4em .9em;border-radius:999px;margin-bottom:18px}
+  .hero p.lead{font-size:clamp(1.05rem,1.7vw,1.28rem);color:var(--muted);max-width:48ch}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px;align-items:center}
+  .hero-note{font-size:.9rem;color:var(--muted)}
+
+  section{padding:clamp(46px,6vw,78px) 0}
+  .section-soft{background:var(--soft)}
+  .eyebrow{color:var(--accent-dark);font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.8rem;margin-bottom:.5rem}
+  .lead-narrow{max-width:62ch;color:var(--muted);font-size:1.06rem}
+
+  .grid{display:grid;gap:18px}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:840px){.g3{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.g3{grid-template-columns:1fr}}
+
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+  .card .ic{width:42px;height:42px;border-radius:12px;background:var(--soft2);display:flex;align-items:center;justify-content:center;
+    font-size:1.3rem;margin-bottom:12px}
+  .card h3{margin-bottom:.25em}
+  .card p{margin:0;color:var(--muted);font-size:.97rem}
+
+  .pain{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+  .pain li{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid var(--line);
+    border-radius:12px;padding:14px 16px}
+  .pain li::before{content:"✕";color:#d9534f;font-weight:800;flex:0 0 auto;margin-top:1px}
+
+  .steps{counter-reset:step;display:grid;gap:16px}
+  .steps .step{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px 22px 22px 70px;box-shadow:var(--shadow)}
+  .steps .step::before{counter-increment:step;content:counter(step);position:absolute;left:18px;top:20px;
+    width:36px;height:36px;border-radius:50%;background:var(--primary);color:#fff;font-weight:800;
+    display:flex;align-items:center;justify-content:center}
+  .steps .step h3{margin:0 0 .2em}.steps .step p{margin:0;color:var(--muted)}
+
+  .price{display:grid;gap:14px}
+  .price .row{display:flex;justify-content:space-between;gap:18px;align-items:baseline;background:#fff;
+    border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .price .row .name{font-weight:700}
+  .price .row .meta{color:var(--muted);font-size:.9rem;display:block;font-weight:400;margin-top:2px}
+  .price .row .val{color:var(--primary);font-weight:800;white-space:nowrap;text-align:right}
+  .note{font-size:.88rem;color:var(--muted);margin-top:14px}
+
+  .band{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);color:#fff;border-radius:24px;
+    padding:clamp(28px,4vw,46px);box-shadow:var(--shadow)}
+  .band h2{color:#fff}.band p{color:#dbe7f7;margin-bottom:0}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:8px}
+  @media(max-width:560px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat .n{font-size:clamp(1.5rem,3vw,2rem);font-weight:800}
+  .stat .l{color:#cfe0f6;font-size:.9rem}
+
+  .faq details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:4px 18px;margin-bottom:12px}
+  .faq summary{cursor:pointer;font-weight:700;padding:14px 0;list-style:none;display:flex;justify-content:space-between;gap:12px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";color:var(--accent);font-weight:800;font-size:1.3rem;line-height:1}
+  .faq details[open] summary::after{content:"–"}
+  .faq details p{color:var(--muted);margin:0 0 14px}
+
+  .final{text-align:center}
+  .final .box{background:var(--soft);border:1px solid var(--line);border-radius:24px;padding:clamp(32px,5vw,56px)}
+  .contacts{display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:center;margin-top:18px;color:var(--muted);font-size:.97rem}
+  .contacts span{display:inline-flex;gap:.4em;align-items:center}
+
+  footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:.88rem}
+  .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand"><b>Small business</b> digitalization</div>
+    <div class="nav-right">
+      <span class="langs"><a href="../../small/">RU</a> · <a class="on">EN</a></span>
+      <a href="#cta" class="btn nav-cta">Free assessment</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <span class="badge">Ready-made solutions · budget ₸150K – 5M · days to weeks</span>
+    <h1>Small business digitalization —<br>in weeks, not a year</h1>
+    <p class="lead">We pick, set up and connect ready-made tools — CRM, online cash register, Kaspi payments, a website, bots. We order custom development only when nothing off-the-shelf fits. Clear budget.</p>
+    <div class="hero-cta">
+      <a href="#cta" class="btn">Free 2–5 day assessment</a>
+      <span class="hero-note">No commitment · a plan with budget and timeline</span>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Sound familiar?</div>
+    <h2>What usually holds growth back</h2>
+    <ul class="pain" style="margin-top:22px">
+      <li>Leads and customers slip through the cracks, with no one to follow up.</li>
+      <li>The cash register and receipts are a constant compliance headache.</li>
+      <li>Taking payments is clumsy, and your apps don’t talk to each other.</li>
+      <li>You have neither the budget nor a year for a “big transformation”.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="section-soft">
+  <div class="wrap">
+    <div class="eyebrow">The solution</div>
+    <h2>A fast, practical digital start</h2>
+    <p class="lead-narrow">We work with <strong>proven ready-made tools</strong>. We pick exactly what solves your task, set it up, connect everything into a single flow and train your team. The same engineering rigor as on large projects — but at the scale and pace of a small business, without overpaying. <strong>Any stage can be skipped at your request.</strong></p>
+  </div>
+</section>
+
+<!-- WHAT WE IMPLEMENT -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">What we implement</div>
+    <h2>Tools matched to your task</h2>
+    <div class="grid g3" style="margin-top:26px">
+      <div class="card"><div class="ic">📇</div><h3>CRM</h3><p>Leads, customers, deals, reminders — nothing gets lost.</p></div>
+      <div class="card"><div class="ic">🧾</div><h3>Online cash register & fiscal</h3><p>Compliant receipts, set up for your tax regime.</p></div>
+      <div class="card"><div class="ic">💳</div><h3>Payments</h3><p>Kaspi/Halyk acquiring, pay on the website and by link.</p></div>
+      <div class="card"><div class="ic">🌐</div><h3>Website / landing</h3><p>Storefront, catalog, lead form.</p></div>
+      <div class="card"><div class="ic">🤖</div><h3>Bots & automation</h3><p>Auto-replies, funnels, mailings, reporting.</p></div>
+      <div class="card"><div class="ic">🔗</div><h3>Integrations</h3><p>Data flows between your tools automatically.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section-soft">
+  <div class="wrap">
+    <div class="eyebrow">How it works</div>
+    <h2>Four simple steps</h2>
+    <div class="steps g2" style="margin-top:26px">
+      <div class="step"><h3>Assessment · 2–5 days</h3><p>What to digitalize, which ready-made tools fit, and what can be subsidized.</p></div>
+      <div class="step"><h3>Rollout · 1–4 weeks</h3><p>Installation, setup, data migration, team training.</p></div>
+      <div class="step"><h3>Automation · 2–6 weeks</h3><p>We connect the tools and set up funnels and reporting.</p></div>
+      <div class="step"><h3>Handover</h3><p>The configured tools and instructions stay yours.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Pricing</div>
+    <h2>Guideline, in tenge</h2>
+    <div class="price" style="margin-top:24px">
+      <div class="row"><span class="name">Express assessment<span class="meta">2–5 days · free for returning clients</span></span><span class="val">₸150–500K</span></div>
+      <div class="row"><span class="name">Rollout of one solution<span class="meta">1–2 weeks</span></span><span class="val">₸300K – 1.5M</span></div>
+      <div class="row"><span class="name">Turnkey digital stack<span class="meta">CRM + register + payments + website · 3–6 weeks</span></span><span class="val">₸1.5–5M</span></div>
+      <div class="row"><span class="name">Light automation & integrations<span class="meta">2–6 weeks</span></span><span class="val">₸0.5–5M</span></div>
+      <div class="row"><span class="name">Custom mini-development to spec<span class="meta">only if no ready-made option · on estimate</span></span><span class="val">from ₸1M</span></div>
+    </div>
+    <p class="note">Indicative; quotes in tenge ($ for reference at ₸500/$). SaaS subscriptions (CRM, fiscal, hosting) are the client’s operating costs. Many costs are subsidized under the Damu / DKB-2025 programs — we’ll help you apply. A detailed estimate is in the commercial proposal.</p>
+  </div>
+</section>
+
+<!-- SUPPORT + PROOF -->
+<section class="section-soft">
+  <div class="wrap grid g2" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch">
+    <div class="card">
+      <div class="eyebrow">Government support</div>
+      <h3 style="font-size:1.35rem">We’ll help you get subsidies</h3>
+      <p style="color:var(--muted);margin:0">Small businesses can access rate subsidies, guarantees and digitalization grants (Damu, DKB-2025). We’ll advise what applies to your case and help with the paperwork.</p>
+    </div>
+    <div class="band">
+      <div class="eyebrow" style="color:#ffd9b8">Proof of standard</div>
+      <h2 style="font-size:1.35rem">The same standards — on simple tasks</h2>
+      <p>A large analytical project (anonymized): an engineering review of a big system and project documentation to GOST/ISO. For a small business — the same approach on your tasks.</p>
+      <div class="stats">
+        <div class="stat"><div class="n">~97,500</div><div class="l">code files</div></div>
+        <div class="stat"><div class="n">130</div><div class="l">modules</div></div>
+        <div class="stat"><div class="n">11/13</div><div class="l">AS-IS sections / diagrams</div></div>
+        <div class="stat"><div class="n">2</div><div class="l">specs to GOST/ISO</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Questions</div>
+    <h2>FAQ</h2>
+    <div class="faq" style="margin-top:24px">
+      <details open><summary>Is this just reselling software?</summary><p>No: we select, implement, connect into a single flow and train your team. You pay for the outcome, not for licenses.</p></details>
+      <details><summary>What if there’s no ready-made solution?</summary><p>We’ll tell you honestly and offer custom mini-development to spec — only as needed.</p></details>
+      <details><summary>Do I need ongoing support?</summary><p>We hand over the configured solution plus instructions; ongoing support is available on a separate request.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta" class="final">
+  <div class="wrap">
+    <div class="box">
+      <h2>Book a free assessment</h2>
+      <p class="lead-narrow" style="margin:0 auto">In 2–5 days we’ll give you a clear plan with budget and timeline. No commitment.</p>
+      <div style="margin-top:24px"><a href="mailto:[email]" class="btn">Get a free assessment</a></div>
+      <div class="contacts">
+        <span>✉️ [email]</span>
+        <span>📞 [phone]</span>
+        <span>🌐 [website]</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>© <span id="y"></span> Small business digitalization. Ready-made solutions and light automation.</div>
+    <div>Kazakhstan · quotes in tenge</div>
+  </div>
+</footer>
+
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>

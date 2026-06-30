@@ -1,6 +1,5 @@
 ﻿# Цифровая трансформация бизнеса — лендинги
 
-Титульная страница + три сегмента (GitHub Pages):
-- maliy/ — малый бизнес
-- sredniy/ — средний бизнес
-- krupniy/ — крупный бизнес
+Единый сайт (GitHub Pages): титульная (RU/EN) + 3 сегмента на 2 языках.
+- small/ medium/ large/ — RU
+- en/small/ en/medium/ en/large/ — EN

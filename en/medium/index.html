@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital transformation — from strategy to working systems (mid-market)</title>
+<meta name="description" content="Digital maturity assessment, R&D, AS-IS analysis, specs to GOST/ISO, target architecture and software development — a single engineering pipeline. For mid-market business.">
+<style>
+  :root{
+    --bg:#ffffff; --ink:#13233b; --muted:#5b6b82; --line:#e6ecf3;
+    --primary:#1f4e8c; --primary-dark:#163a68; --soft:#f3f7fc; --soft2:#eef4fb;
+    --accent:#ff7a18; --accent-dark:#e96a08; --ok:#0fa36b; --no:#d9534f;
+    --radius:16px; --shadow:0 10px 30px rgba(20,40,70,.08); --maxw:1080px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{line-height:1.2;margin:0 0 .4em}
+  h1{font-size:clamp(1.9rem,4.4vw,3.1rem);font-weight:800;letter-spacing:-.02em}
+  h2{font-size:clamp(1.4rem,3vw,2.05rem);font-weight:800;letter-spacing:-.01em}
+  h3{font-size:1.12rem;font-weight:700}
+  p{margin:0 0 1rem}
+  a{color:inherit}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  .btn{display:inline-flex;align-items:center;gap:.5em;background:var(--accent);color:#fff;font-weight:700;
+    text-decoration:none;padding:.95em 1.6em;border-radius:999px;border:0;cursor:pointer;font-size:1.03rem;
+    box-shadow:0 8px 20px rgba(255,122,24,.32);transition:transform .15s ease,background .15s ease}
+  .btn:hover{background:var(--accent-dark);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--primary);box-shadow:none;border:2px solid var(--primary)}
+  .btn-ghost:hover{background:var(--primary);color:#fff}
+  .langs{font-size:.85rem;font-weight:700}
+  .langs a{color:var(--muted);text-decoration:none;padding:0 .25em}
+  .langs a.on{color:var(--primary)}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:14px}
+  .brand{font-weight:800;letter-spacing:-.01em;font-size:1.05rem}
+  .brand b{color:var(--primary)}
+  .nav-right{display:flex;align-items:center;gap:16px}
+  .nav .btn{padding:.6em 1.1em;font-size:.92rem}
+  .nav-cta{white-space:nowrap}
+
+  .hero{background:linear-gradient(160deg,#f3f7fc 0%,#eaf1fb 60%,#ffffff 100%);padding:clamp(48px,7vw,92px) 0}
+  .hero .badge{display:inline-block;background:#e4eefc;color:var(--primary);font-weight:700;font-size:.82rem;
+    padding:.4em .9em;border-radius:999px;margin-bottom:18px}
+  .hero p.lead{font-size:clamp(1.05rem,1.7vw,1.28rem);color:var(--muted);max-width:54ch}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px;align-items:center}
+  .trust{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px 22px;color:var(--muted);font-size:.9rem}
+  .trust span{display:inline-flex;gap:.4em;align-items:center}
+  .trust b{color:var(--primary)}
+
+  section{padding:clamp(46px,6vw,78px) 0}
+  .section-soft{background:var(--soft)}
+  .eyebrow{color:var(--accent-dark);font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.8rem;margin-bottom:.5rem}
+  .lead-narrow{max-width:64ch;color:var(--muted);font-size:1.06rem}
+
+  .grid{display:grid;gap:18px}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:840px){.g3{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.g2,.g3{grid-template-columns:1fr}}
+
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+  .card .num{width:34px;height:34px;border-radius:10px;background:var(--primary);color:#fff;font-weight:800;
+    display:flex;align-items:center;justify-content:center;margin-bottom:12px;font-size:.95rem}
+  .card h3{margin-bottom:.25em}
+  .card p{margin:0;color:var(--muted);font-size:.97rem}
+
+  .pain{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:12px}
+  .pain li{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid var(--line);
+    border-radius:12px;padding:14px 16px}
+  .pain li::before{content:"✕";color:var(--no);font-weight:800;flex:0 0 auto;margin-top:1px}
+
+  .steps{counter-reset:step;display:grid;gap:16px}
+  .steps .step{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px 22px 22px 70px;box-shadow:var(--shadow)}
+  .steps .step::before{counter-increment:step;content:counter(step);position:absolute;left:18px;top:20px;
+    width:36px;height:36px;border-radius:50%;background:var(--primary);color:#fff;font-weight:800;
+    display:flex;align-items:center;justify-content:center}
+  .steps .step h3{margin:0 0 .2em}.steps .step p{margin:0;color:var(--muted)}
+
+  .io{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:560px){.io{grid-template-columns:1fr}}
+  .checklist{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+  .checklist li{display:flex;gap:10px;align-items:flex-start;color:var(--muted)}
+  .checklist.yes li::before{content:"✓";color:var(--ok);font-weight:800}
+  .checklist.no li::before{content:"✕";color:var(--no);font-weight:800}
+
+  .why{list-style:none;padding:0;margin:24px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:12px 22px}
+  @media(max-width:560px){.why{grid-template-columns:1fr}}
+  .why li{display:flex;gap:10px;align-items:flex-start}
+  .why li::before{content:"✓";color:var(--ok);font-weight:800;flex:0 0 auto;margin-top:1px}
+
+  .price{display:grid;gap:14px}
+  .price .row{display:flex;justify-content:space-between;gap:18px;align-items:baseline;background:#fff;
+    border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .price .row .name{font-weight:700}
+  .price .row .meta{color:var(--muted);font-size:.9rem;display:block;font-weight:400;margin-top:2px}
+  .price .row .val{color:var(--primary);font-weight:800;white-space:nowrap;text-align:right}
+  .note{font-size:.88rem;color:var(--muted);margin-top:14px}
+
+  .band{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);color:#fff;border-radius:24px;
+    padding:clamp(28px,4vw,46px);box-shadow:var(--shadow)}
+  .band h2{color:#fff}.band p{color:#dbe7f7}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:18px}
+  @media(max-width:560px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat .n{font-size:clamp(1.5rem,3vw,2rem);font-weight:800}
+  .stat .l{color:#cfe0f6;font-size:.9rem}
+
+  .faq details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:4px 18px;margin-bottom:12px}
+  .faq summary{cursor:pointer;font-weight:700;padding:14px 0;list-style:none;display:flex;justify-content:space-between;gap:12px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";color:var(--accent);font-weight:800;font-size:1.3rem;line-height:1}
+  .faq details[open] summary::after{content:"–"}
+  .faq details p{color:var(--muted);margin:0 0 14px}
+
+  .final{text-align:center}
+  .final .box{background:var(--soft);border:1px solid var(--line);border-radius:24px;padding:clamp(32px,5vw,56px)}
+  .contacts{display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:center;margin-top:18px;color:var(--muted);font-size:.97rem}
+  .contacts span{display:inline-flex;gap:.4em;align-items:center}
+
+  footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:.88rem}
+  .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand"><b>Digital transformation</b> · mid-market</div>
+    <div class="nav-right">
+      <span class="langs"><a href="../../medium/">RU</a> · <a class="on">EN</a></span>
+      <a href="#cta" class="btn nav-cta">Free assessment</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <span class="badge">Mid-market · turnkey DT program · R&amp;D + development</span>
+    <h1>Digital transformation —<br>from strategy to working systems</h1>
+    <p class="lead">Digital maturity assessment, R&amp;D, an “as-is” analysis, specs to GOST/ISO, target architecture and software development — a single engineering pipeline with measurable speed-up.</p>
+    <div class="hero-cta">
+      <a href="#cta" class="btn">Free assessment</a>
+      <a href="#how" class="btn btn-ghost">See how it works</a>
+    </div>
+    <div class="trust">
+      <span><b>✓</b> GOST 34.602-2020</span>
+      <span><b>✓</b> ISO/IEC/IEEE 29148</span>
+      <span><b>✓</b> Traceability “research → requirement → code”</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">The problem</div>
+    <h2>Transformation gets stuck between slides and reality</h2>
+    <p class="lead-narrow">The strategy exists, but the working systems don’t. Analysis and development are run by different vendors, meaning is lost at every handoff, timelines grow, and the result is “not quite it”.</p>
+    <ul class="pain">
+      <li>The strategy stayed on slides — it never reached working systems.</li>
+      <li>Different vendors for analysis and development — meaning lost at the seams.</li>
+      <li>Timelines grow while the result drifts from the original task.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="section-soft">
+  <div class="wrap">
+    <div class="eyebrow">The solution</div>
+    <h2>A digital transformation program in one pair of hands</h2>
+    <p class="lead-narrow"><strong>“Assessment → R&amp;D → AS-IS analysis → spec → TO-BE architecture → development → acceptance.”</strong> A well-tuned engineering pipeline takes on the heavy lifting, while engineering discipline — standards, atomic requirements, end-to-end traceability and quality control — guarantees each stage’s result and no losses between stages. We take transformation all the way to working systems and hand it over together with a reproducible knowledge base. <strong>Any stage can be skipped at your request.</strong></p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Program stages</div>
+    <h2>Six stages — take what you need</h2>
+    <div class="grid g3" style="margin-top:26px">
+      <div class="card"><div class="num">1</div><h3>Strategy & DT assessment (R&amp;D)</h3><p>Digital maturity assessment, concept, technology choices, roadmap.</p></div>
+      <div class="card"><div class="num">2</div><h3>System analysis & audit (AS-IS)</h3><p>Architecture, processes, data, integrations, tech debt — with diagrams.</p></div>
+      <div class="card"><div class="num">3</div><h3>Requirements & spec</h3><p>GOST 34.602-2020 / ISO/IEC/IEEE 29148, traceability matrix.</p></div>
+      <div class="card"><div class="num">4</div><h3>Target architecture (TO-BE)</h3><p>ADRs, integration design (APIs, queues, government systems, ERP), data models.</p></div>
+      <div class="card"><div class="num">5</div><h3>Solution development</h3><p>Products and systems to spec: greenfield, re-platforming, MVP, automation.</p></div>
+      <div class="card"><div class="num">6</div><h3>Acceptance & handover</h3><p>Test programs and procedures, acceptance docs, handover of the package and knowledge base.</p></div>
+    </div>
+    <p class="note">Enter at any stage, skip what you don’t need — and go through to handover.</p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="section-soft">
+  <div class="wrap">
+    <div class="eyebrow">How it works</div>
+    <h2>Three steps</h2>
+    <div class="steps" style="margin-top:26px">
+      <div class="step"><h3>Assessment</h3><p>We gauge digital maturity, the task, scope, risks and format — free, in 30 minutes. We immediately decide which stages you need and which can be skipped.</p></div>
+      <div class="step"><h3>Transformation pipeline</h3><p>Strategy → analysis → spec → architecture → development; each stage ends with a verifiable result. We take only the stages you need.</p></div>
+      <div class="step"><h3>Handover</h3><p>We deliver working systems, a document package and a reproducible knowledge base. That’s where our cycle ends.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S IN / OUT -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Scope</div>
+    <h2>What’s included and what isn’t</h2>
+    <div class="io" style="margin-top:24px">
+      <div class="card">
+        <h3 style="color:var(--ok)">✓ Included</h3>
+        <ul class="checklist yes" style="margin-top:10px">
+          <li>R&amp;D: strategy, research, “as-is” analysis.</li>
+          <li>Development: spec, architecture, software, acceptance — up to a working system.</li>
+          <li>Any set of stages for your task.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--no)">✕ Not included</h3>
+        <ul class="checklist no" style="margin-top:10px">
+          <li>Operational support after handover.</li>
+          <li>Maintenance and post-launch evolution.</li>
+        </ul>
+        <p style="color:var(--muted);margin:12px 0 0;font-size:.95rem">We hand over an autonomous result and a methodology — with no lock-in to the contractor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section-soft">
+  <div class="wrap">
+    <div class="eyebrow">Timelines & budgets</div>
+    <h2>Guideline, in tenge</h2>
+    <div class="price" style="margin-top:24px">
+      <div class="row"><span class="name">Digital maturity assessment<span class="meta">1–2 weeks</span></span><span class="val">₸0.5–1.5M</span></div>
+      <div class="row"><span class="name">Consulting phase<span class="meta">strategy/R&amp;D + AS-IS analysis + spec · 1–2 months</span></span><span class="val">₸3–8M</span></div>
+      <div class="row"><span class="name">TO-BE architecture (separately)<span class="meta">2–3 weeks</span></span><span class="val">₸1.5–5M</span></div>
+      <div class="row"><span class="name">Solution development<span class="meta">MVP / full system</span></span><span class="val">₸12.5–40 / 40–150M</span></div>
+      <div class="row"><span class="name">Turnkey program<span class="meta">consulting → development → acceptance</span></span><span class="val">5–12 months</span></div>
+    </div>
+    <p class="note">Indicative (quotes in tenge, $ for reference at ₸500/$). The final estimate depends on scope, number of procedures, integrations and the chosen set of stages — unneeded ones are skipped. A detailed breakdown is in the commercial proposal.</p>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">What sets us apart</div>
+    <h2>Why us</h2>
+    <ul class="why">
+      <li>Transformation to a result, not to a presentation.</li>
+      <li>A single pipeline instead of a chain of vendors — no meaning lost at the seams.</li>
+      <li>Engineering discipline, not “text from a neural network”.</li>
+      <li>Expertise in agentic and prompt engineering — speeds up every phase and raises code and documentation quality.</li>
+      <li>Flexibility: any stage can be skipped — you pay only for what you need.</li>
+      <li>A clear split between “what exists” and “what to change”.</li>
+      <li>Handover of a reproducible methodology, not dependence on a contractor.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="section-soft">
+  <div class="wrap">
+    <div class="band">
+      <div class="eyebrow" style="color:#ffd9b8">Proof · anonymized case</div>
+      <h2>R&amp;D phase for a large B2B platform</h2>
+      <p>During the R&amp;D phase of a DT program for a large B2B tender SaaS platform, we delivered: an AS-IS document (11 sections, 13 diagrams), two specs to GOST/ISO (~150 traceable requirements) and a stack recommendation — on a tight timeline. The specs were prepared as a direct input to the development phase. <em>(Details under NDA.)</em></p>
+      <div class="stats">
+        <div class="stat"><div class="n">~97,500</div><div class="l">code files</div></div>
+        <div class="stat"><div class="n">55</div><div class="l">procedure types</div></div>
+        <div class="stat"><div class="n">~160</div><div class="l">white-label clients</div></div>
+        <div class="stat"><div class="n">~150</div><div class="l">traceable requirements</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Questions</div>
+    <h2>FAQ</h2>
+    <div class="faq" style="margin-top:24px">
+      <details open><summary>Do you only draw up a transformation strategy?</summary><p>No. Strategy is the first stage; we take transformation all the way to working systems, traceable to requirements and research.</p></details>
+      <details><summary>Can I order only part of the program?</summary><p>Yes: assessment, strategy, analysis, spec, architecture or development against a ready spec — any set of stages, with unneeded ones skipped.</p></details>
+      <details><summary>Do you support systems after launch?</summary><p>No. Our cycle is R&amp;D and development up to acceptance and handover. You run operations yourself or with a chosen contractor; we hand over the documentation and a reproducible knowledge base.</p></details>
+      <details><summary>Is this just text from a neural network?</summary><p>No. Structure, standards, requirements and quality control come from an engineering methodology; we apply modern AI tools under engineering control — as an accelerator, not a replacement for discipline.</p></details>
+      <details><summary>What about confidentiality?</summary><p>We work under NDA; everything is anonymized in public materials.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta" class="final">
+  <div class="wrap">
+    <div class="box">
+      <h2>We’ll run your digital transformation — from strategy to working systems</h2>
+      <p class="lead-narrow" style="margin:0 auto">Let’s start with a free assessment: in 30 minutes we’ll define the needed stages, timeline and budget.</p>
+      <div style="margin-top:24px"><a href="mailto:[email]" class="btn">Request a call</a></div>
+      <div class="contacts">
+        <span>✉️ [email]</span>
+        <span>📞 [phone]</span>
+        <span>🌐 [website]</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>© <span id="y"></span> Digital transformation · mid-market. R&amp;D and development to GOST/ISO.</div>
+    <div>Kazakhstan · quotes in tenge</div>
+  </div>
+</footer>
+
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
